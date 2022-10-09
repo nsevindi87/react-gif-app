@@ -22,11 +22,10 @@ function App() {
 
 
 
-
   return (
     <div className="App">
       <div className="search-area">
-        <input />
+        <input placeholder="ne aramistiniz?"/>
         <button>ARA</button>
       </div>
       <div className="content">
@@ -35,7 +34,11 @@ function App() {
           <div className="row">
             {data.map((item) => (
               <div className="col-md-3 gif-item">
-                <img src={item.images.original.url} />
+                <a href={item.images.original.url} target="_blank"> <img src={item.images.original.url} /></a>
+                <a href={item.user?.profile_url} target="_blank" className="user-area">
+                  <img src={item.user?.avatar_url} style={{width:50, height:50, borderRadius:100}} className="user-area"/>
+                  <span>{item.user?.display_name}</span>
+                </a>
               </div>
             ))}
 

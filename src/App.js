@@ -6,7 +6,9 @@ const API_KEY = "dwGBh4uTSJQEuxH0uFlCIANljxtt87xV"
 
 function App() {
   const [loading, setloading] = useState(true);
-  const [data, setData] = useState([])
+  const [data, setData] = useState([]);
+  const [query, setQuery] = useState(``);
+  const [title, setTitle] = useState(`Trends`);
 
   useEffect(() => {                   //! App ilk acildiginda bu gelir.
     axios.get(`https://api.giphy.com/v1/gifs/trending?api_key=${API_KEY}&limit=40`).then((result) => {
@@ -25,7 +27,7 @@ function App() {
   return (
     <div className="App">
       <div className="search-area">
-        <input placeholder="ne aramistiniz?"/>
+        <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Ne aramistiniz?"/>
         <button>ARA</button>
       </div>
       <div className="content">
